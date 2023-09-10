@@ -1,0 +1,139 @@
+<mvc:View
+	controllerName="configuringnews.controller.Worklist"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.f.semantic"
+	xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout">
+
+	<semantic:SemanticPage
+		id="page"
+		class="myCustomPage"
+		headerPinnable="true"
+		toggleHeaderOnTitleClick="true">
+
+		<semantic:titleHeading>
+			<Title text="{i18n>worklistTitle}" />
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<FlexBox direction="Row" alignItems="Center">
+				<Text text="Title" width="101px" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit" visible="true" class="sapUiSmallMargin"/>
+				<Input id="InputS2" type="Text" showValueHelp="false" enabled="true" visible="true" width="263px" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+				<Text text="Created by" width="101px" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit" visible="true" class="sapUiSmallMargin" />
+				<Input id="InputS3" type="Text" showValueHelp="false" enabled="true" visible="true" width="263px" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0" />
+				<Text text="Subtitle" width="101px" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit" visible="true" class="sapUiSmallMargin"/>
+				<Input id="InputS4" type="Text" showValueHelp="false" enabled="true" visible="true" width="263px" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+			</FlexBox > 
+			<FlexBox direction="Row" alignItems="Center">
+				<Text text="Area" width="101px" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit" visible="true" class="sapUiSmallMargin"/>
+				<Input id="InputS5" type="Text" showValueHelp="false" enabled="true" visible="true" width="263px" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+				<Text text="Description" width="101px" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit" visible="true" class="sapUiSmallMargin"/>
+				<Input id="InputS6" type="Text" showValueHelp="false" enabled="true" visible="true" width="263px" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0"/>
+				<Text text="Status" width="101px" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit" visible="true" class="sapUiSmallMargin"/>
+				<Select id="InputS7" change="onStatusFilterChange" width="260px">
+					<items>
+						<core:Item text="" key="" />
+						<core:Item  text="Borrador" key="BO" />
+						<core:Item  text="Desplegada" key="DE" />
+						<core:Item  text="Cancelada" key="CA" />
+					</items>
+				</Select>
+			</FlexBox >
+		</semantic:headerContent>
+
+		<semantic:content>	
+		<IconTabBar id="iconTabBar" class="iconTabBarCustomHeader">
+		<items>
+            <IconTabFilter icon="sap-icon://work-history" iconColor="Default" text="Notas" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+			<Table
+				id="table"
+				width="auto"
+				items="{path: '/News', sorter: { path: 'title', descending: false } }"
+				noDataText="{worklistView>/tableNoDataText}"
+				growing="true"
+				growingScrollToLoad="true"
+				updateFinished=".onUpdateFinished">
+						
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
+						<Button tooltip="{i18n>addNew}" icon="sap-icon://add" press="addRow_New"/>
+						<ToolbarSpacer />
+						<SearchField
+							placeholder = "Search by Description"
+							id="searchField"
+							tooltip="{i18n>worklistSearchTooltip}"
+							search=".onSearch"
+							width="auto">
+						</SearchField>
+					</Toolbar>
+				</headerToolbar>
+
+				<columns >
+					<Column id="titleColumn" hAlign="Initial" >
+						<Text text="Title" id="titleColumnTitle"/>
+					</Column>
+					<Column id="subtitleColumn" hAlign="Initial">
+						<Text text="Sub title" id="subtitleColumnTitle"/>
+					</Column>
+					<Column id="descriptionColumn" hAlign="Initial">
+						<Text text="Description" id="descriptionColumnTitle"/>
+					</Column>
+					<Column id="createdByColumn" hAlign="Center">
+						<Text text="Created By" id="createdByColumnTitle"/>
+					</Column>
+					<Column id="areaColumn" hAlign="Center" width="100px">
+						<Text text="Area" id="areaColumnTitle"/>
+					</Column>
+					<Column id="modifiedByColumn" hAlign="Center" >
+						<Text text="Modified By" id="modifiedByColumnTitle" />
+					</Column>
+					<Column id="prioColumn" hAlign="Center" width="100px">
+						<Text text="Priority" id="PrioColumnTitle" />
+					</Column>
+					<Column id="typeColumn" hAlign="Center" width="60px">
+						<Text text="Type" id="typeColumnTitle"/>
+					</Column>
+					<Column id="statusByColumn" hAlign="Center" width="150px">
+						<Text text="Status" id="statusByColumnTitle" />
+					</Column>
+					<Column id="Action" hAlign="Center" width="60px">
+						<Text text="Action" id="ActionByColumnTitle" width="auto"/>
+					</Column>
+				</columns>
+
+				<items>
+					<!--<ColumnListItem press="onListItemPress" type="Navigation">-->
+					<ColumnListItem press="onListItemConfigPress" type="Navigation">
+						<cells>
+							<Text text="{title}"/>
+							<Text text="{subtitle}"/>
+							<Text text="{description}"/>
+							<Text text="{createdBy}"/>
+							<Text text="{area}"/>
+							<Text text="{modifiedBy}"/>
+							<!--<Text text="{path: 'priority', formatter: '.formatPriority'}"/>-->
+							<Text id="priorityText" text="{path: 'priority', formatter: '.formatPriorityText'}"/>
+							<Text text="{path: 'type', formatter: '.formatType'}"/>
+							<Text id="statusText" text="{path: 'status', formatter: '.formatStatus'}"/>
+							<HBox alignItems="Start"> <!-- Contenedor para ambos botones -->
+								<!--<Button type="Reject" icon="sap-icon://email-read" width="auto" visible="{= ${status} === 'S' }"/> 
+								<Button type="Accept" icon="sap-icon://action-settings" press="onListItemConfigPress" /> -->
+								<Button type="Reject" icon="sap-icon://delete" width="" press="onDeleteRecordPress"/>
+							</HBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			</IconTabFilter>
+        </items>
+			</IconTabBar>
+		</semantic:content>
+
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+		</semantic:sendEmailAction>
+
+	</semantic:SemanticPage>
+
+</mvc:View>

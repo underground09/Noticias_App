@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" controllerName="configuringnews.controller.Dialog2" xmlns="sap.m">
+    <Dialog horizontalScrolling="true" showHeader="true" state="Warning" stretch="false" title="Add Type Note" type="Standard" verticalScrolling="true" class="sapUiNoContentPadding">
+        <content>
+            <RadioButtonGroup id="myRadioButtonGroup" columns="1" selectedIndex="0" valueState="None" width="121px" editable="true" enabled="true" textDirection="Inherit" class="sapUiTinyMarginTop sapUiLargeMarginBegin sapUiTinyMarginEnd" select="_onRadioButtonGroupSelect">
+                <buttons>
+                    <RadioButton id="RBT" text="Text" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="true"/>
+                    <RadioButton id="RBC" text="Contents" editable="true" enabled="true" visible="true" width="187px" valueState="None" selected="false"/>
+                </buttons>
+            </RadioButtonGroup>
+        </content>
+        <beginButton/>
+        <buttons>
+            <Button text="Accept" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onAcceptPressDialog"/>
+            <Button text="Cancel" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onCancelPressDialog"/>
+        </buttons>
+        <customHeader/>
+        <endButton/>
+        <subHeader/>
+    </Dialog>
+</core:FragmentDefinition>

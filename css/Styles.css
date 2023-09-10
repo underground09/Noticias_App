@@ -1,0 +1,86 @@
+.blue {
+    color: rgba(0, 70, 140, 0.822) !important;
+    font-weight: bold;
+}
+
+.green {
+    color: rgb(0, 128, 0) !important;
+    font-weight: bold;
+}
+
+.myCustomPage .sapFDynamicPageHeader {
+    background-color: #d1e0ee;
+}
+
+.myCustomPage .sapFDynamicPageTitle {
+    background-color: #d1e0ee;
+}
+
+.iconTabBarCustomHeader .sapMITH {
+    background-color: #efefef;
+}
+
+.priorityLow {
+    background-color: green;
+    color: white !important;
+    border-radius: 5px;
+    padding: 3px 10px;
+    text-align: center;
+}
+
+.priorityMedium {
+    background-color: yellow;
+    color: black !important;
+    border-radius: 5px;
+    padding: 3px 10px;
+    text-align: center;
+}
+
+.priorityHigh {
+    background-color: orange;
+    color: black !important;
+    border-radius: 5px;
+    padding: 3px 10px;
+    text-align: center;
+}
+
+.priorityUrgent {
+    background-color: red;
+    color: white !important;
+    border-radius: 5px;
+    padding: 3px 10px;
+    text-align: center;
+}
+
+.priorityCritical {
+    background-color: darkred;
+    color: white !important;
+    border-radius: 5px;
+    padding: 3px 10px;
+    text-align: center;
+}
+
+.statusBorrador {
+    background-color: orange;
+    color: black !important;
+    border-radius: 5px;
+    padding: 3px 10px;
+    text-align: center;
+}
+
+.statusDesplegada {
+    background-color: green;
+    color: white !important;
+    border-radius: 5px;
+    padding: 3px 10px;
+    text-align: center;
+}
+
+.statusCancelada {
+    background-color: red;
+    color: white !important;
+    border-radius: 5px;
+    padding: 3px 10px;
+    text-align: center;
+}
+

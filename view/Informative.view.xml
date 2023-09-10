@@ -1,0 +1,157 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="configuringnews.controller.Informative" xmlns="sap.m">
+    <Page id="pageInformative" title="Information news and content" >
+        <content>
+        <ScrollContainer>
+        <OverflowToolbar width="auto" height="auto" design="Auto" enabled="true" visible="true">
+                <Button text="Volver" type="Default" icon="sap-icon://nav-back" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+                <ToolbarSpacer/>
+            </OverflowToolbar>
+        <VBox alignItems="Start" direction="Column" fitContainer="false" width="1147px" height="150px" justifyContent="Center" renderType="Div" visible="true" displayInline="false" class="sapUiSmallMargin">
+                <items>
+                    <VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+                        <items>
+                            <HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+                                <items>
+                                    <Text text="Area" width="130px" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit" visible="true"/>
+                                    <Text text="{header>/area}" width="927px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </items>
+
+                            </HBox>
+                            <HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+                                <items>
+                                    <Text text="Estatus" width="129px" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit" visible="true"/>
+                                    <Text text="{header>/status}" width="931.00000000px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </items>
+
+                            </HBox>
+                        </items>
+                    </VBox>
+                    <VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+                        <items>
+                            <HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+                                <items>
+                                    <Text text="Title" width="130px" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit" visible="true"/>
+                                    <Text text="{header>/title}"  width="983px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </items>
+                            </HBox>
+                            <HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+                                <items>
+                                    <Text text="Subtitle" width="129px" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit" visible="true"/>
+                                    <Text text="{header>/subtitle}"  width="984px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </items>
+                            </HBox>
+                            <VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+                                <items>
+                                    <HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+                                        <items>
+                                            <Text text="Priority" width="130px" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit" visible="true"/>
+                                            <Text text="{header>/priority}"  width="987px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </items>
+
+                                    </HBox>
+                                    <HBox alignItems="Stretch" direction="Row" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div" visible="true" displayInline="false">
+                                        <items>
+                                            <Text text="Description" width="129px" maxLines="1" wrapping="false" textAlign="Center" textDirection="Inherit" visible="true"/>
+                                            <Text text="{header>/descripcion}" width="981.00000000px" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </items>
+                                    </HBox>
+                                </items>
+                            </VBox>
+                        </items>
+                    </VBox>
+                </items>
+
+            </VBox>
+             </ScrollContainer>
+            
+            <IconTabBar id="IconTabBarGral" expandable="false" expanded="true" applyContentPadding="false" backgroundDesign="Solid" upperCase="false" visible="true" select="onTabSelect" selectedKey="pdf">
+                <items>
+                    <IconTabFilter key="pdf" id="pdfIconTabFilter" icon="sap-icon://pdf-attachment" count="{counts>/pdf}" iconColor="Default" text="PDF"  design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+                        <content>
+                            <Table id="table4" width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
+                                <infoToolbar/>
+                                <headerToolbar/>
+                                <columns>
+                                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="Position" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="Nombre Archivo" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="File" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                </columns>
+                                
+                            </Table>
+                        </content>
+                    </IconTabFilter>
+                    <IconTabSeparator icon="" iconDensityAware="false"/>
+                    <IconTabFilter key="png" id="imgIconTabFilter" icon="sap-icon://picture" count="{counts>/img}" iconColor="Default" text="Imagen" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false" >
+                        <content>
+                            <Table id="table5" width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" class="sapUiResponsiveMargin">
+                                <infoToolbar/>
+                                <headerToolbar/>
+                                <columns>
+                                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="Position" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="Nombre Archivo" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                        <header>
+                                            <Text text="File" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                        </header>
+                                        <footer/>
+                                    </Column>
+                                </columns>
+                            </Table>
+                        </content>
+                    </IconTabFilter>
+                    <IconTabSeparator icon="" iconDensityAware="false"/>
+                    <IconTabFilter icon="sap-icon://kpi-corporate-performance" count="{counts>/chart}" iconColor="Default" text="Chart"  design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+                        <content>
+                            <Text text="Notes go here ..." width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </content>
+                    </IconTabFilter>
+                    <IconTabFilter icon="sap-icon://doc-attachment" iconColor="Default" count="{counts>/word}" text="Word"  design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+                        <content>
+                            <Text text="Notes go here ..." width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </content>
+                    </IconTabFilter>
+                    <IconTabFilter icon="sap-icon://excel-attachment" iconColor="Default"  count="{counts>/excel}" text="Excel" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+                        <content>
+                            <Text text="Notes go here ..." width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </content>
+                    </IconTabFilter>
+                    <IconTabFilter icon="sap-icon://document-text" iconColor="Default" text="Text" count="{counts>/text}" design="Vertical" showAll="false" textDirection="Inherit" enabled="true" visible="true" iconDensityAware="false">
+                        <content>
+                            <Text text="Notes go here ..." width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </content>
+                    </IconTabFilter>
+                </items>
+                <content>
+                    <Text text="Tab Bar Content goes here ..." width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                </content>
+            </IconTabBar>
+        </content>
+        <headerContent/>
+    </Page>
+</mvc:View>
+

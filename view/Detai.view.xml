@@ -1,0 +1,303 @@
+<ns0:View xmlns:ns0="sap.ui.core.mvc" xmlns:ns1="sap.m.semantic" xmlns:ns2="sap.m" xmlns:ns3="sap.ui.layout.form" xmlns:ns4="sap.ui.core" xmlns:ns5="sap.ui.unified" controllerName="configuringnews.controller.Detai">
+    <ns1:SemanticPage id="page">
+        <ns2:OverflowToolbar width="auto" height="46px" design="Auto" enabled="true" visible="true">
+                <ns2:Button text="Volver" type="Default" icon="sap-icon://nav-back" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress" />
+                <ns2:Button text="Editar" type="Reject" icon="sap-icon://edit" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onValidation_edit" />
+                <ns2:Button text="Borrar" type="Reject" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onValidation_delete" />
+                <ns2:Button text="Guardar" type="Emphasized" icon="sap-icon://save" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onValidation_change" />
+         </ns2:OverflowToolbar>
+        <ns1:content>
+            
+        <ns2:HBox width="100%" justifyContent="Center">
+            <ns3:Form width="620px" editable="true" visible="true">
+                <ns3:title>
+                        <ns4:Title text="Informacion General" level="Auto" icon="sap-icon://list" />
+                                </ns3:title>
+                                <ns3:formContainers>
+                                    <ns3:FormContainer visible="true">
+                                        <ns3:formElements>
+                                            <ns3:FormElement visible="true">
+                                                <ns3:label>
+                                                    <ns2:Label text="Id" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="false" />
+                                                </ns3:label>
+                                                <ns3:fields>
+                                                    <ns2:Input type="Text" showValueHelp="false" enabled="true" visible="false" width="478px" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0" />
+                                                </ns3:fields>
+                                            </ns3:FormElement>
+                                            <ns3:FormElement visible="true">
+                                                <ns3:label>
+                                                    <ns2:Label text="Area" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                </ns3:label>
+                                                <ns3:fields>
+                                                    <ns2:Input type="Text" showValueHelp="false" enabled="true" visible="true" width="478px" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0" />
+                                                </ns3:fields>
+                                            </ns3:FormElement>
+                                            <ns3:FormElement visible="true">
+                                                <ns3:label>
+                                                    <ns2:Label text="Title" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                </ns3:label>
+                                                <ns3:fields>
+                                                    <ns2:Input type="Text" showValueHelp="false" enabled="true" visible="true" width="478px" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0" />
+                                                </ns3:fields>
+                                            </ns3:FormElement>
+                                            <ns3:FormElement visible="true">
+                                                <ns3:label>
+                                                    <ns2:Label text="Priority" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                </ns3:label>
+                                                <ns3:fields>
+                                                    <ns2:ComboBox id="Pbox0" editable="true" enabled="true" visible="true" width="478px" valueState="None" maxWidth="100%">
+                                                        <ns2:items>
+                                                            <ns4:Item text="Baja" enabled="true" key="1" />
+                                                            <ns4:Item text="Media" enabled="true" key="2" />
+                                                            <ns4:Item text="Alta" enabled="true" key="3" />
+                                                            <ns4:Item text="Urgente" enabled="true" key="4" />
+                                                            <ns4:Item text="Critica" enabled="true" key="5" />
+                                                        </ns2:items>
+                                                    </ns2:ComboBox>
+                                                </ns3:fields>
+                                            </ns3:FormElement>
+                                        </ns3:formElements>
+                                        <ns3:title />
+                                    </ns3:FormContainer>
+                                </ns3:formContainers>
+                                <ns3:layout>
+                                    <ns3:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12" />
+                                </ns3:layout>
+                </ns3:Form>
+            <ns2:VBox>
+                <ns3:Form width="620px" editable="true" visible="true">
+                    <ns3:title>
+                            <ns4:Title level="Auto" />
+                                    </ns3:title>
+                                <ns3:formContainers>
+                                    <ns3:FormContainer visible="true">
+                                        <ns3:formElements>
+                                            <ns3:FormElement visible="true">
+                                                <ns3:label>
+                                                    <ns2:Label text="Type" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                </ns3:label>
+                                                <ns3:fields>
+                                                    <ns2:ComboBox id="Tbox1" editable="true" enabled="true" visible="true" width="170px" valueState="None" maxWidth="100%" change="onComboBoxSelectionChange">
+                                                        <ns2:items>
+                                                            <ns4:Item text="Notes" enabled="true" key="NOT" />
+                                                            <ns4:Item text="PDF" enabled="true" key="PDF" />
+                                                            <ns4:Item text="KPI" enabled="true" key="KPI" />
+                                                        </ns2:items>
+                                                    </ns2:ComboBox>
+                                                </ns3:fields>
+                                            </ns3:FormElement>
+                                            <ns3:FormElement visible="true">
+                                                <ns3:label>
+                                                    <ns2:Label text="Estatus" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                </ns3:label>
+                                                <ns3:fields>
+                                                    <ns2:ComboBox id="Sbox2" editable="true" enabled="true" visible="true" width="170px" valueState="None" maxWidth="100%">
+                                                        <ns2:items>
+                                                            <ns4:Item text="Borrador" enabled="true" key="BO" />
+                                                            <ns4:Item text="Desplegada" enabled="true" key="DE" />
+                                                            <ns4:Item text="Cancelada" enabled="true" key="CA" />
+                                                        </ns2:items>
+                                                    </ns2:ComboBox>
+                                                </ns3:fields>
+                                            </ns3:FormElement>
+                                            <ns3:FormElement visible="true">
+                                                <ns3:label>
+                                                    <ns2:Label text="Subtitle" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                </ns3:label>
+                                                <ns3:fields>
+                                                    <ns2:Input type="Text" showValueHelp="false" enabled="true" visible="true" width="478px" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0" />
+                                                </ns3:fields>
+                                            </ns3:FormElement>
+                                            <ns3:FormElement visible="true">
+                                                <ns3:label>
+                                                    <ns2:Label text="Description" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                </ns3:label>
+                                                <ns3:fields>
+                                                    <ns2:Input type="Text" showValueHelp="false" enabled="true" visible="true" width="478px" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0" />
+                                                </ns3:fields>
+                                            </ns3:FormElement>
+                                        </ns3:formElements>
+                                        <ns3:title />
+                                    </ns3:FormContainer>
+                                </ns3:formContainers>
+                                    <ns3:layout>
+                                        <ns3:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12" />
+                                    </ns3:layout>
+                </ns3:Form>
+            </ns2:VBox>
+        </ns2:HBox>
+        <ns2:HBox width="100%" justifyContent="Center">
+        
+            <!--<ns3:Form width="1220px" editable="true" visible="{path: '/dummyPath', formatter: '.isNOTVisible'}">"-->
+            <ns3:Form width="620px" editable="true" visible="{myModelType>/notes}">
+                <ns3:title>
+                            <ns4:Title text="Content" level="Auto" icon="sap-icon://list" />
+                                </ns3:title>
+                                <ns3:formContainers>
+                                    <ns3:FormContainer visible="true">
+                                        <ns3:formElements>
+                                         <ns3:FormElement visible="true">
+                                                <ns3:label>
+                                                    <ns2:Label text="id" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="false" />
+                                                </ns3:label>
+                                                <ns3:fields>
+                                                    <ns2:Input type="Text" showValueHelp="false" enabled="true" visible="false" width="478px" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0" />
+                                                </ns3:fields>
+                                            </ns3:FormElement>
+                                            <ns3:FormElement visible="true">
+                                                <ns3:label>
+                                                    <ns2:Label text="Select" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                </ns3:label>
+                                                <ns3:fields>
+                                                    <ns2:Button id="Btype" text="Type" icon="sap-icon://attachment-text-file" iconFirst="true" width="76px" enabled="true" visible="true" iconDensityAware="false" press="onComboBoxSelectionType" />
+                                                </ns3:fields>
+                                            </ns3:FormElement>
+                                            <ns3:FormElement visible="true">
+                                                <ns3:fields>
+                                                    <ns2:TextArea rows="4" cols="20" maxLength="0" wrapping="None" enabled="true" width="1px" required="false" valueStateText="Invalid entry" visible="false" />
+                                                </ns3:fields>
+                                            </ns3:FormElement>
+                                            <ns3:FormElement visible="true">
+                                                <ns3:label>
+                                                    <ns2:Label text="" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                </ns3:label>
+                                                <ns5:FileUploader 
+                                                    id="fileUploader"
+                                                    uploadOnChange="true" 
+                                                    maximumFileSize="10" 
+                                                    uploadComplete="_onFileUploaderUploadComplete" 
+                                                    change="_onFileUploaderChange" 
+                                                    typeMissmatch="_onFileUploaderTypeMissmatch" 
+                                                    fileSizeExceed="_onFileUploaderFileSizeExceed"
+                                                    fileType="png,jpeg,jpg,zip,xlsx,docx,pdf">
+                                                    <ns5:headerParameters />
+                                                    <ns5:parameters />
+                                                    <ns5:xhrSettings />
+                                                </ns5:FileUploader>
+                                                
+
+                                                <ns2:HBox id="Botones" width="100%" justifyContent="Start">  
+                                                    <ns2:Button id="CREATE" type="Transparent" icon="sap-icon://add" iconFirst="true" width="32px" enabled="true" visible="true" tooltip="Add" iconDensityAware="false" press="_onFileUploaderChange" />
+                                                        <ns2:Button id="DELETE" type="Transparent" icon="sap-icon://delete" iconFirst="true" width="32px" enabled="true" visible="true" tooltip="delete" iconDensityAware="false" press="_onFileUploaderChange" />
+                                                        <ns2:Button id="VIEW" type="Transparent" icon="sap-icon://vds-file" iconFirst="true" width="32px" enabled="true" visible="true" tooltip="View Content" iconDensityAware="false" press="_onFileUploaderChangeFile" />
+                                                        <ns2:Button id="DOWNLOAD" type="Transparent" icon="sap-icon://download" iconFirst="true" width="32px" enabled="true" visible="true" tooltip="download" iconDensityAware="false" press="_onFileUploaderChangeDownload" />
+                                                        <!--<ns2:Button id="UPDATE" type="Emphasized" icon="sap-icon://save" iconFirst="true" width="32px" enabled="true" visible="true" tooltip="save" iconDensityAware="false" press="_onFileUploaderChange" />                                 -->
+                                                </ns2:HBox>
+                                                </ns3:FormElement>
+
+                                                <ns3:FormElement>
+                                                <ns2:ScrollContainer height="300px" vertical="true">
+                                                <ns2:Table id="table3" width="550px" noDataText="No data" mode="SingleSelectMaster" selectionChange="onListItemPressDeta" showSeparators="All" updateFinished="onUpdateFinishedTable3" growing="true" growingThreshold="30" growingScrollToLoad="true" class="sapUiResponsiveMargin">
+
+                                                        <ns2:infoToolbar>
+                                                                        <ns2:Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+                                                                            <ns2:content>
+                                                                                <ns2:Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                                            </ns2:content>
+                                                                        </ns2:Toolbar>
+                                                                    </ns2:infoToolbar>
+                                                                    <ns2:headerToolbar>
+                                                                        <ns2:OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
+                                                                            <ns2:content>
+                                                                                <ns2:Title text="Items (3)" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false" />
+                                                                            </ns2:content>
+                                                                        </ns2:OverflowToolbar>
+                                                                    </ns2:headerToolbar>
+                                                                    <ns2:columns>
+                                                                        <ns2:Column width="auto" hAlign="Initial" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                                                            <ns2:header>
+                                                                                <ns2:Text text="Icono" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                                            </ns2:header>
+                                                                            <ns2:footer />
+                                                                        </ns2:Column>
+                                                                        <ns2:Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                                                            <ns2:header>
+                                                                                <ns2:Text text="Nombre Archivo" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                                            </ns2:header>
+                                                                            <ns2:footer />
+                                                                        </ns2:Column>
+                                                                          <ns2:Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                                                            <ns2:header>
+                                                                                <ns2:Text text="File" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                                            </ns2:header>
+                                                                            <ns2:footer />
+                                                                        </ns2:Column> 
+                                                                    </ns2:columns>
+                                                </ns2:Table>
+                                            </ns2:ScrollContainer> 
+                                            </ns3:FormElement>
+                                        </ns3:formElements>
+                                        <ns3:title />
+                                    </ns3:FormContainer>
+                                </ns3:formContainers>
+                                <ns3:layout>
+                            <ns3:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12" />
+                        </ns3:layout>
+                        
+            </ns3:Form>
+           
+            <!--<ns3:Form width="1220px" editable="true" visible="{path: '/dummyPath', formatter: '.isNOTVisible'}">-->
+             <ns3:Form width="620px" editable="true" visible="{myModelType>/kpi}">
+
+                <ns3:title>
+                            <ns4:Title text="KPI" level="Auto" icon="sap-icon://list" />
+                                </ns3:title>
+                                <ns3:formContainers>
+                                    <ns3:FormContainer visible="true">
+                                        <ns3:formElements>
+                                            <ns3:FormElement visible="true">
+                                                <ns3:label>
+                                                    <ns2:Label text="URL" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                </ns3:label>
+                                                <ns3:fields>
+                                                    <ns2:Input type="Text" showValueHelp="false" enabled="true" visible="true" width="478px" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0" />
+                                                </ns3:fields>
+                                            </ns3:FormElement>
+                                            <ns3:FormElement visible="true">
+                                                <ns3:label>
+                                                    <ns2:Label text="X-axis" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                </ns3:label>
+                                                <ns3:fields>
+                                                    <ns2:Input type="Text" showValueHelp="false" enabled="true" visible="true" width="478px" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0" />
+                                                </ns3:fields>
+                                            </ns3:FormElement>
+                                            <ns3:FormElement visible="true">
+                                                <ns3:label>
+                                                    <ns2:Label text="Y-axis" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                </ns3:label>
+                                                <ns3:fields>
+                                                    <ns2:Input type="Text" showValueHelp="false" enabled="true" visible="true" width="478px" valueHelpOnly="false" required="false" valueStateText="Invalid entry" maxLength="0" />
+                                                </ns3:fields>
+                                            </ns3:FormElement>
+                                            <ns3:FormElement visible="true">
+                                                <ns3:label>
+                                                    <ns2:Label text="Graphic type" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true" />
+                                                </ns3:label>
+                                                <ns3:fields>
+                                                    <ns2:ComboBox id="Gbox3" editable="true" enabled="true" visible="true" width="170px" valueState="None" maxWidth="100%">
+                                                        <ns2:items>
+                                                            <ns4:Item text="Vertical Bar" enabled="true" key="bar" />
+                                                            <ns4:Item text="Radial Micro" enabled="true" key="Radial" />
+                                                        </ns2:items>
+                                                    </ns2:ComboBox>
+                                                </ns3:fields>
+                                            </ns3:FormElement>
+                                        </ns3:formElements>
+                                        <ns3:title />
+                                    </ns3:FormContainer>
+                                </ns3:formContainers>
+                                <ns3:layout>
+                            <ns3:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12" />
+                        </ns3:layout>
+            </ns3:Form>
+            
+            </ns2:HBox>
+                        <ns2:HBox width="100%" justifyContent="Center">
+                         <ns2:Dialog id="myDialog" visible="false" title="Visualizar Archivo">
+                            <ns2:PDFViewer id="myPDFViewer" height="600px" width="800px" />
+                            <ns2:Image id="myImage" visible="false" />
+                        </ns2:Dialog>
+                </ns2:HBox>
+        </ns1:content>
+    </ns1:SemanticPage>
+</ns0:View>

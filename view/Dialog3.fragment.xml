@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" controllerName="configuringnews.controller.Dialog3" xmlns="sap.m">
+      <Dialog horizontalScrolling="true" showHeader="true" state="None" stretch="false" title="Text update" type="Standard" verticalScrolling="true">
+        <content>
+            <TextArea id="IArea" value="" rows="4" placeholder="Enter the text" cols="200" maxLength="255" wrapping="None" enabled="true" required="false" valueStateText="Invalid entry" visible="true"/>
+        </content>
+        <beginButton/>
+        <buttons>
+            <Button text="Aceptar" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onAcceptPressDialog"/>
+            <Button text="Cancel" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onCancelPressDialog"/>
+        </buttons>
+        <customHeader/>
+        <endButton/>
+        <subHeader/>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="DashboardService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="CPI_Tenants" EntityType="DashboardService.CPI_Tenants">
+                    <NavigationPropertyBinding Path="customer" Target="Customers"/>
+                </EntitySet>
+                <EntitySet Name="Modules" EntityType="DashboardService.Modules">
+                    <NavigationPropertyBinding Path="module_cust" Target="Customer_Modules"/>
+                </EntitySet>
+                <EntitySet Name="Customers" EntityType="DashboardService.Customers">
+                    <NavigationPropertyBinding Path="cpi_tenant" Target="CPI_Tenants"/>
+                    <NavigationPropertyBinding Path="modules" Target="Customer_Modules"/>
+                </EntitySet>
+                <EntitySet Name="Customer_Modules" EntityType="DashboardService.Customer_Modules">
+                    <NavigationPropertyBinding Path="module" Target="Modules"/>
+                </EntitySet>
+                <EntitySet Name="News" EntityType="DashboardService.News">
+                    <NavigationPropertyBinding Path="content" Target="News_Content"/>
+                </EntitySet>
+                <EntitySet Name="News_Content" EntityType="DashboardService.News_Content">
+                    <NavigationPropertyBinding Path="new" Target="News"/>
+                </EntitySet>
+            </EntityContainer>
+            <EntityType Name="CPI_Tenants">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="code" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="description" Type="Edm.String"/>
+                <NavigationProperty Name="customer" Type="DashboardService.Customers"/>
+            </EntityType>
+            <EntityType Name="Modules">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="code" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="description" Type="Edm.String"/>
+                <NavigationProperty Name="module_cust" Type="Collection(DashboardService.Customer_Modules)"/>
+            </EntityType>
+            <EntityType Name="Customers">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="code" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="60"/>
+                <Property Name="description" Type="Edm.String"/>
+                <Property Name="integ_client_id" Type="Edm.String"/>
+                <Property Name="integ_scope" Type="Edm.String"/>
+                <Property Name="integ_cpi_tenant" Type="Edm.String" MaxLength="10"/>
+                <Property Name="integ_enabled" Type="Edm.Boolean"/>
+                <NavigationProperty Name="cpi_tenant" Type="DashboardService.CPI_Tenants">
+                    <ReferentialConstraint Property="integ_cpi_tenant" ReferencedProperty="code"/>
+                </NavigationProperty>
+                <NavigationProperty Name="modules" Type="Collection(DashboardService.Customer_Modules)"/>
+            </EntityType>
+            <EntityType Name="Customer_Modules">
+                <Key>
+                    <PropertyRef Name="mod_id"/>
+                    <PropertyRef Name="cus_id"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="mod_id" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="cus_id" Type="Edm.String" MaxLength="10" Nullable="false"/>
+                <Property Name="installed" Type="Edm.Boolean"/>
+                <Property Name="enabled" Type="Edm.Boolean"/>
+                <Property Name="config" Type="Edm.String"/>
+                <NavigationProperty Name="module" Type="DashboardService.Modules">
+                    <ReferentialConstraint Property="mod_id" ReferencedProperty="code"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="News">
+                <Key>
+                    <PropertyRef Name="id"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="id" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="type" Type="Edm.String" MaxLength="10"/>
+                <Property Name="area" Type="Edm.String" MaxLength="20"/>
+                <Property Name="priority" Type="Edm.String" MaxLength="10"/>
+                <Property Name="status" Type="Edm.String"/>
+                <Property Name="title" Type="Edm.String"/>
+                <Property Name="subtitle" Type="Edm.String"/>
+                <Property Name="description" Type="Edm.String"/>
+                <NavigationProperty Name="content" Type="Collection(DashboardService.News_Content)">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="News_Content">
+                <Key>
+                    <PropertyRef Name="id"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="id" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="new_id" Type="Edm.String" MaxLength="10"/>
+                <Property Name="file_name" Type="Edm.String"/>
+                <Property Name="position" Type="Edm.Int32"/>
+                <Property Name="content_type" Type="Edm.String"/>
+                <Property Name="textcontent" Type="Edm.String"/>
+                <Property Name="doccontent" Type="Edm.String"/>
+                <NavigationProperty Name="new" Type="DashboardService.News">
+                    <ReferentialConstraint Property="new_id" ReferencedProperty="id"/>
+                </NavigationProperty>
+            </EntityType>
+            <Annotations Target="DashboardService.Customers/createdAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DashboardService.Customers/createdBy">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DashboardService.Customers/modifiedAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DashboardService.Customers/modifiedBy">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DashboardService.Customer_Modules/createdAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DashboardService.Customer_Modules/createdBy">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DashboardService.Customer_Modules/modifiedAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DashboardService.Customer_Modules/modifiedBy">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DashboardService.News/createdAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DashboardService.News/createdBy">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DashboardService.News/modifiedAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DashboardService.News/modifiedBy">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+            <Annotations Target="DashboardService.News_Content/createdAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Created On"/>
+            </Annotations>
+            <Annotations Target="DashboardService.News_Content/createdBy">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Created By"/>
+            </Annotations>
+            <Annotations Target="DashboardService.News_Content/modifiedAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="Changed On"/>
+            </Annotations>
+            <Annotations Target="DashboardService.News_Content/modifiedBy">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Core.Description" String="User's unique ID"/>
+                <Annotation Term="Common.Label" String="Changed By"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
